@@ -11,7 +11,11 @@ app.use(express.static('public'));
 
 //Notas Para mandar contenido de otra carpeta
 app.get('/', (req, res) => {
-    res.render('home');
+    //Notas Mandando argumentos
+    res.render('home',{
+        nombre: "Jose Luis",
+        titulo:'Curso de node'
+    });
 });
 app.get('/generic', (req, res) => {
     res.sendFile(__dirname +'/'+ ruta +'/generic.html');
