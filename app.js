@@ -1,24 +1,18 @@
 const express = require('express');
 const app = express();
 const port = 8080;
+const ruta = 'public/template-roadtrip/';
 
 //Notas middleware de express || Servir contenido estatico
-app.use(express.static('public'));
+app.use(express.static('public/template-roadtrip/'));
 
-//Notas Entra en la pagina principal
-//Notas Cuando se ejecuta el middleware esta linea de abajo no se ejecuta
-app.get('/', (req, res) => {
-    res.send('Página principal');
-});
-//Notas Entra en http://localhost:8080/hola-mundo
-app.get('/hola-mundo', (req, res) => {
-    res.send('Página Hola mundo');
-});
-//Notas Entra si no es ninguna de las otras alternativas
-// app.get('*', (req, res) => {
-//     res.send('404| page no found');
-// });
 //Notas Para mandar contenido de otra carpeta
+app.get('/generic', (req, res) => {
+    res.sendFile(__dirname +'/'+ ruta +'/generic.html');
+});
+app.get('/elements', (req, res) => {
+    res.sendFile(__dirname + '/' + ruta + '/elements.html');
+});
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/public/404.html');
 });
